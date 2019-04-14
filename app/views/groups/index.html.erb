@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+   </head>
+   <body>
+      <div class="container">
+         <h1>Groups Index</h1>
+         <% @groups.each do |group| %>
+            <%= group.name.capitalize %>
+            <% if current_user.id == group.user_id %><br>
+               <a href="/events/new-group-event<%= group.id %>" class="btn btn-success">Create Event</a>
+            <% end %>
+            <hr>
+         <% end %>
+      </div>
+   </body>
+</html>

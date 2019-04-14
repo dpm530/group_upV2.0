@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_15_233126) do
+ActiveRecord::Schema.define(version: 2019_04_14_195917) do
 
   create_table "comments", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.integer "user_id"
     t.integer "event_id"
     t.datetime "created_at", null: false
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 2019_03_15_233126) do
     t.text "description"
     t.string "addressLine1"
     t.string "addressLine2"
-    t.integer "member_id"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "location_id"
     t.index ["group_id"], name: "index_events_on_group_id"
-    t.index ["member_id"], name: "index_events_on_member_id"
+    t.index ["location_id"], name: "index_events_on_location_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 2019_03_15_233126) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_members_on_group_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "nested_comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_nested_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

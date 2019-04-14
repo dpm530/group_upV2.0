@@ -1,0 +1,2 @@
+class NestedCommentsController < ApplicationController
+end
