@@ -6,8 +6,9 @@
    </head>
    <body>
       <div class="container">
+         <h1>Group: <%= @group.name.capitalize %></h1>
          <h1>Events New</h1>
-         <form action="/events" method="post">
+         <form action="/events/create/<%= @group.id %>" method="post">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 
             <div class="form-group">

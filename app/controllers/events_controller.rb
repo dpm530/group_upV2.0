@@ -1,11 +1,17 @@
 class EventsController < ApplicationController
 
-   def new_event
+   def show
+      @event=Event.find(params[:id])
+      @comments=Comment.where(event: @event).all
    end
 
-   def create
-      @location=Location.existsOrCreate(params[:location][:city], params[:location][:state])
+   def new_event
+      @group=Group.find(params[:id])
 
+   end
+
+   def create_event
+      @location=Location.existsOrCreate(params[:location][:city], params[:location][:state])
       @group=Group.find(params[:id])
 
       @event=Event.new(event_params)
@@ -17,16 +23,18 @@ class EventsController < ApplicationController
          return redirect_to users_path
       end
 
+
       errors=@event.errors.full_messages+@location.errors.full_messages
 
       flash[:errors]=errors
 
-      return redirect_to new_event_path
+      return redirect_to ("/events/new/"+(@group.id).to_s)
    end
+
 
    private
       def event_params
-         params.require(:event).permit(:name, :date, :time, :description, :addressLine1, :addressLine2).merge(group: @group ).merge(location: @location)
+         params.require(:event).permit(:name, :date, :time, :description, :addressLine1, :addressLine2).merge(group: @group).merge(location: @location)
       end
 
 

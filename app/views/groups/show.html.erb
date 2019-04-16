@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+   </head>
+   <body>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+         <a class="navbar-brand" href="#">Group Up</a>
+
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item active">
+                  <a class="nav-link" href="/users">
+                     Home <span class="sr-only">(current)</span>
+                  </a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/groups">Explore</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/groups/new">Start a new Group</a>
+               </li>
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fas fa-user-circle"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                     <a class="dropdown-item" href="#">Profile</a>
+                     <a class="dropdown-item" href="#">Settings</a>
+                     <div class="dropdown-divider"></div>
+                     <a class="dropdown-item" href="/sessions/logout" data-method="delete">Logout</a>
+                  </div>
+               </li>
+            </ul>
+         </div>
+
+      </nav>
+
+      <div class="container">
+         <div class="row">
+            <div class="col-1"></div>
+            <div class="col-md-10">
+               <div class="row">
+                  <div class="media border p-3">
+                     <div class="col-md-6">
+                        <img src="http://placehold.it/700x400" alt="" style="width:100%">
+                     </div>
+                     <div class="col-md-6">
+                        <h1> <%= @group.name.capitalize %> </h1>
+                        <p><a href="#">Location:</a></p>
+                        <p><a href="#">Members:</a></p>
+                        <p><a href="#">Organized by:</a></p>
+
+                        <% if (current_user.id != @group.user_id)%>
+                           <% if !(@group.users.include? current_user) %>
+                              <form action="/members/<%= @group.id %>/user" method="post">
+                                 <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
+                                 <button class='btn btn-primary' type='submit'>Join Group</button>
+                              </form>
+                           <% elsif ((@group.users.include? current_user)==true) %>
+                              <form action='/members/<%= @group.id %>/user' method='post'>
+                                 <input type='hidden' name='_method' value='delete'>
+                                 <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
+                                 <button class='btn btn-danger'>Leave Group</button>
+                              </form>
+                           <% end %>
+                        <% end %>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-1"></div>
+         </div>
+      </div>
+
+      <div class="container">
+         <div class="row">
+            <div class="col-1"></div>
+            <div class="col-md-10">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="card-title">What we're about</h4>
+                           <p class="card-text"> <%= @group.description %> </p>
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="card-title">Upcoming Events:</h4>
+                           <% @events.each do |event|%>
+                              <a href="/events/<%= event.id %>"><%= event.name.capitalize %></a>
+                           <% end %>
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="card-title">Discussions:</h4>
+                           <form action="/discussions/<%= @group.id %>/user" method="post">
+                              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+                              <div class="form-group">
+                                 <label for="content">Content:</label>
+                                 <textarea name="discussion[content]" rows="8" cols="80" class="form-control"></textarea>
+                              </div>
+
+                              <button type="submit" class="btn btn-primary">Create Discussion</button>
+                           </form>
+                           <div class="container">
+                              <h1>Group Discussion:</h1>
+                              <% if @discussions %>
+                                 <% @discussions.each do |discussion| %>
+                                    <%= discussion.content %><hr>
+                                 <% end %>
+                              <% end %>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="card-title">Organizers:</h4>
+                        </div>
+                     </div>
+                     <div class="card">
+                        <div class="card-body">
+                           <h4 class="card-title">Members:</h4>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-1"></div>
+         </div>
+      </div>
+   </body>
+</html>

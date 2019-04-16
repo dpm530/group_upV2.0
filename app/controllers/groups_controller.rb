@@ -7,6 +7,16 @@ class GroupsController < ApplicationController
    def new
    end
 
+   def show
+      @group=Group.find(params[:id])
+      @events=Event.where(group: @group).all
+      @discussions=Discussion.where(group: @group).all
+
+      puts "="*100
+      puts (@group.users.include? current_user)
+      puts "="*100
+   end
+
    def create
       @location=Location.existsOrCreate(params[:location][:city], params[:location][:state])
 

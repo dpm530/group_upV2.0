@@ -3,6 +3,8 @@ class User < ApplicationRecord
    has_many :groups, dependent: :destroy
    has_many :members, dependent: :destroy
    has_many :comments, dependent: :destroy
+   has_many :attendances, dependent: :destroy
+   has_many :discussions, dependent: :destroy
 
    has_secure_password
 
