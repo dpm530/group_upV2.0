@@ -1,17 +1,9 @@
 class EventsController < ApplicationController
 
    def show
-      puts "="*100
-      puts "START"
-      puts "="*100
       @event=Event.find(params[:id])
       # @event_group=Group.find(@event.group.id)
       @comments=Comment.where(event: @event).all
-      puts "---GROUP---"
-      puts @event_group.description
-      puts "="*100
-      puts "END"
-      puts "="*100
    end
 
    def new_event

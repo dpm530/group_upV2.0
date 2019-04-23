@@ -104,18 +104,18 @@
                      <h1>Attendees</h1>
                   </div>
                   <div class="card-body">
-                     <% @event.users.each do |user| %>
                         <div class="row">
-                           <div class="col-md-3">
-                              <div class="card text-center rounded-circle">
-                                 <div class="card-body">
-                                    <i class="fas fa-user-alt fa-2x"></i>
-                                    <p><%= user.firstName.capitalize %> <%= user.lastName.capitalize %></p>
+                           <% @event.users.each do |user| %>
+                              <div class="col-md-3">
+                                 <div class="card text-center rounded-circle">
+                                    <div class="card-body">
+                                       <i class="fas fa-user-alt" style="font-size: 2.7rem;"></i>
+                                       <p><%= user.firstName.capitalize %> <%= user.lastName.capitalize %></p>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
+                           <% end %>
                         </div>
-                     <% end %>
                   </div>
                </div>
                <div class="card mb-2">

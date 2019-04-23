@@ -5,10 +5,16 @@ class GroupsController < ApplicationController
    end
 
    def new
+      @categories=["Outdoor & Adventure","Tech","Family","Sports & Fitness","Photography","Food & Drink","Language & Culture","Movements","Pets","Sci-Fi & Games","Social","Career & Business"]
+
+      puts "="*100
+      @categories.each{|c| puts c}
+      puts "="*100
    end
 
    def show
       @group=Group.find(params[:id])
+      @user_posts=@group.user_posts
       @events=Event.where(group: @group).all
       @discussions=Discussion.where(group: @group).all
 
@@ -38,7 +44,7 @@ class GroupsController < ApplicationController
 
    private
       def group_params
-         params.require(:group).permit(:name, :description).merge(user: current_user).merge(location: @location)
+         params.require(:group).permit(:name, :description, :category).merge(user: current_user).merge(location: @location)
       end
 
 
