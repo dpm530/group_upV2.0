@@ -6,7 +6,7 @@
    </head>
    <body>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom">
 
          <a class="navbar-brand" href="#">Group Up</a>
 
@@ -43,104 +43,110 @@
 
       </nav>
 
-      <div class="container">
-         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-md-10">
-               <div class="row">
-                  <div class="media border p-3">
-                     <div class="col-md-6">
+      <div class="page-content-header">
+         <div class="container pt-4 pb-3">
+            <div class="row">
+               <div class="col-md-12 mx-auto">
+                  <div class="row">
+                     <div class="col-md-7">
                         <img src="http://placehold.it/700x400" alt="" style="width:100%">
                      </div>
-                     <div class="col-md-6">
+                     <div class="col-md-5">
                         <h1> <%= @group.name.capitalize %> </h1>
                         <p><a href="#">Location:</a></p>
                         <p><a href="#">Members:</a></p>
                         <p><a href="#">Organized by:</a></p>
 
                         <% if (current_user.id != @group.user_id)%>
-                           <% if !(@group.users.include? current_user) %>
-                              <form action="/members/<%= @group.id %>/user" method="post">
-                                 <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
-                                 <button class='btn btn-primary' type='submit'>Join Group</button>
-                              </form>
-                           <% elsif ((@group.users.include? current_user)==true) %>
-                              <form action='/members/<%= @group.id %>/user' method='post'>
-                                 <input type='hidden' name='_method' value='delete'>
-                                 <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
-                                 <button class='btn btn-danger'>Leave Group</button>
-                              </form>
-                           <% end %>
+                        <% if !(@group.users.include? current_user) %>
+                        <form action="/members/<%= @group.id %>/user" method="post">
+                           <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
+                           <button class='btn btn-primary' type='submit'>Join Group</button>
+                        </form>
+                        <% elsif ((@group.users.include? current_user)==true) %>
+                        <form action='/members/<%= @group.id %>/user' method='post'>
+                           <input type='hidden' name='_method' value='delete'>
+                           <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
+                           <button class='btn btn-danger'>Leave Group</button>
+                        </form>
                         <% end %>
-
+                        <% end %>
                      </div>
                   </div>
                </div>
             </div>
-            <div class="col-1"></div>
          </div>
       </div>
 
-      <div class="container">
-         <div class="row">
-            <div class="col-1"></div>
-            <div class="col-md-10">
-               <div class="row">
-                  <div class="col-md-6">
-                     <div class="card">
-                        <div class="card-body">
-                           <h4 class="card-title">What we're about</h4>
-                           <p class="card-text"> <%= @group.description %> </p>
+      <hr>
+
+      <div class="page-content-body" style="background-color:#f6f7f8">
+         <div class="container py-3">
+            <div class="row">
+               <div class="col-md-12 mx-auto">
+                  <div class="row">
+                     <div class="col-md-7">
+                        <div class="card mb-2">
+                           <div class="card-body">
+                              <h4 class="card-title">What we're about</h4>
+                              <p class="card-text"> <%= @group.description %> </p>
+                           </div>
                         </div>
-                     </div>
-                     <div class="card">
-                        <div class="card-body">
-                           <h4 class="card-title">Upcoming Events:</h4>
-                           <% @events.each do |event|%>
+                        <div class="card mb-2">
+                           <div class="card-body">
+                              <h4 class="card-title">Upcoming Events:</h4>
+                              <% @events.each do |event|%>
                               <a href="/events/<%= event.id %>"><%= event.name.capitalize %></a>
-                           <% end %>
+                              <% end %>
+                           </div>
+                        </div>
+                        <div class="card mb-2">
+                           <div class="card-body">
+                              <h4 class="card-title">Discussions:</h4>
+                              <form action="/discussions/<%= @group.id %>/user" method="post">
+                                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+
+                                 <div class="form-group">
+                                    <label for="content">Content:</label>
+                                    <textarea name="discussion[content]" rows="8" cols="80" class="form-control"></textarea>
+                                 </div>
+
+                                 <button type="submit" class="btn btn-primary">Create Discussion</button>
+                              </form>
+                              <div class="container">
+                                 <h1>Group Discussion:</h1>
+                                 <% if @discussions %>
+                                 <% @discussions.each do |discussion| %>
+                                 <%= discussion.content %><hr>
+                                 <% end %>
+                                 <% end %>
+                              </div>
+                           </div>
                         </div>
                      </div>
-                     <div class="card">
-                        <div class="card-body">
-                           <h4 class="card-title">Discussions:</h4>
-                           <form action="/discussions/<%= @group.id %>/user" method="post">
-                              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-
-                              <div class="form-group">
-                                 <label for="content">Content:</label>
-                                 <textarea name="discussion[content]" rows="8" cols="80" class="form-control"></textarea>
-                              </div>
-
-                              <button type="submit" class="btn btn-primary">Create Discussion</button>
-                           </form>
-                           <div class="container">
-                              <h1>Group Discussion:</h1>
-                              <% if @discussions %>
-                                 <% @discussions.each do |discussion| %>
-                                    <%= discussion.content %><hr>
-                                 <% end %>
-                              <% end %>
+                     <div class="col-md-5">
+                        <div class="card mb-2">
+                           <div class="card-body">
+                              <h4 class="card-title">Organizers:</h4>
+                           </div>
+                        </div>
+                        <div class="card mb-2">
+                           <div class="card-body">
+                              <h4 class="card-title">Members:</h4>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div class="col-md-6">
-                     <div class="card">
-                        <div class="card-body">
-                           <h4 class="card-title">Organizers:</h4>
-                        </div>
-                     </div>
-                     <div class="card">
-                        <div class="card-body">
-                           <h4 class="card-title">Members:</h4>
-                        </div>
-                     </div>
-                  </div>
                </div>
             </div>
-            <div class="col-1"></div>
          </div>
       </div>
+
+      <footer class="py-5 bg-dark">
+         <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; GroupUp 2019</p>
+         </div>
+      </footer>
+
    </body>
 </html>
