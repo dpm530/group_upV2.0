@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2019_04_23_211119) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "attendances", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
-    t.integer "event_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
   end
 
   create_table "discussions", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+    t.bigint "user_id"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "content"
@@ -48,10 +51,10 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
     t.text "description"
     t.string "addressLine1"
     t.string "addressLine2"
-    t.integer "group_id"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "location_id"
+    t.bigint "location_id"
     t.index ["group_id"], name: "index_events_on_group_id"
     t.index ["location_id"], name: "index_events_on_location_id"
   end
@@ -59,8 +62,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "user_id"
-    t.integer "location_id"
+    t.bigint "user_id"
+    t.bigint "location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
@@ -76,8 +79,8 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.bigint "group_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_members_on_group_id"
@@ -86,10 +89,10 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
 
   create_table "nested_comments", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "comment_id"
+    t.bigint "comment_id"
     t.index ["comment_id"], name: "index_nested_comments_on_comment_id"
     t.index ["user_id"], name: "index_nested_comments_on_user_id"
   end
@@ -101,8 +104,23 @@ ActiveRecord::Schema.define(version: 2019_04_23_211119) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "location_id"
+    t.bigint "location_id"
     t.index ["location_id"], name: "index_users_on_location_id"
   end
 
+  add_foreign_key "attendances", "events"
+  add_foreign_key "attendances", "users"
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
+  add_foreign_key "discussions", "groups"
+  add_foreign_key "discussions", "users"
+  add_foreign_key "events", "groups"
+  add_foreign_key "events", "locations"
+  add_foreign_key "groups", "locations"
+  add_foreign_key "groups", "users"
+  add_foreign_key "members", "groups"
+  add_foreign_key "members", "users"
+  add_foreign_key "nested_comments", "comments"
+  add_foreign_key "nested_comments", "users"
+  add_foreign_key "users", "locations"
 end
