@@ -24,5 +24,5 @@ test:
 production:
   <<: *default
   database: group_up_production
-  username: group_up
+  username: ubuntu
   password: <%= ENV['GROUP_UP_DATABASE_PASSWORD'] %>
