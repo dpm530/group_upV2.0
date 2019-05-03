@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
       return User.find(session[:user_id]) if session[:user_id]
    end
 
+   def current_guest
+      return User.find(session[:guest_id]) if session[:guest_id]
+   end
+
    helper_method :current_user
+   helper_method :current_guest
 
 end

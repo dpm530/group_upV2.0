@@ -2,7 +2,12 @@ Rails.application.routes.draw do
 
    root 'application#index'
 
-   resources :users
+   resources :users do
+      collection do
+         get 'guest_login' => 'users#guest_login'
+      end
+   end
+
    resources :groups
 
    resources :comments do
@@ -41,6 +46,7 @@ Rails.application.routes.draw do
    resources :sessions do
       collection do
          post 'login' => 'sessions#create'
+         post 'guest_login' => 'sessions#create_guest'
          delete 'logout' => 'sessions#destroy'
       end
    end

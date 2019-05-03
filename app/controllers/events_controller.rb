@@ -32,10 +32,45 @@ class EventsController < ApplicationController
       return redirect_to ("/events/new/"+(@group.id).to_s)
    end
 
+   def edit
+      @event=Event.find(params[:id])
+   end
+
+   def update
+      @event=Event.find(params[:id])
+      @location=Location.existsOrCreate(params[:location][:city], params[:location][:state])
+
+      if @location.valid?
+         if @event.update(update_event_params)
+            flash[:notice]=["Updated Event"]
+
+            return redirect_to group_path
+         end
+      end
+
+      errors=@event.errors.full_messages + @location.errors.full_messages
+
+      flash[:errors]=errors
+      return redirect_to edit_event_path
+   end
+
+   def destroy
+      @event=Event.find(params[:id])
+
+      if @event.destroy
+         flash[:notice]=["Event Deleted"]
+         return redirect_to group_path
+      end
+   end
+
 
    private
       def event_params
          params.require(:event).permit(:name, :date, :time, :description, :addressLine1, :addressLine2).merge(group: @group).merge(location: @location)
+      end
+
+      def update_event_params
+         params.require(:event).permit(:name, :date, :time, :description, :addressLine1, :addressLine2).merge(location: @location)
       end
 
 

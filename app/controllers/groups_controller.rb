@@ -6,10 +6,6 @@ class GroupsController < ApplicationController
 
    def new
       @categories=["Outdoor & Adventure","Tech","Family","Sports & Fitness","Photography","Food & Drink","Language & Culture","Movements","Pets","Sci-Fi & Games","Social","Career & Business"]
-
-      puts "="*100
-      @categories.each{|c| puts c}
-      puts "="*100
    end
 
    def show
@@ -41,6 +37,42 @@ class GroupsController < ApplicationController
 
       return redirect_to new_group_path
    end
+
+   def edit
+      @categories=["Outdoor & Adventure","Tech","Family","Sports & Fitness","Photography","Food & Drink","Language & Culture","Movements","Pets","Sci-Fi & Games","Social","Career & Business"]
+      @group=Group.find(params[:id])
+   end
+
+   def update
+      @group=Group.find(params[:id])
+      @location=Location.existsOrCreate(params[:location][:city], params[:location][:state])
+
+      if @location.valid?
+         if @group.update(group_params)
+            flash[:notice]=["Updated Group"]
+
+            return redirect_to group_path
+         end
+      end
+
+      errors=@group.errors.full_messages + @location.errors.full_messages
+
+      flash[:errors]=errors
+      return redirect_to edit_group_path
+   end
+
+   def destroy
+      puts "="*100
+      puts "Inside Destroy method"
+      puts "="*100
+      @group=Group.find(params[:id])
+
+      @group.destroy
+
+      return redirect_to groups_path
+   end
+
+
 
    private
       def group_params
