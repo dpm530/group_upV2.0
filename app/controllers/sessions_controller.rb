@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
 
       flash[:errors]=['Email Account is Invalid.']
 
-      return redirect_to new_user_path
+      return redirect_to new_guest_users_path
    end
 
    def destroy

@@ -6,7 +6,7 @@
    </head>
    <body>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom">
 
          <a class="navbar-brand" href="#">Group Up</a>
 
@@ -20,10 +20,10 @@
                   <a class="nav-link" href="/">Start a new group</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/users/guest_login">Guest</a>
+                  <a class="nav-link" href="/users/new_guest">Guest</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="#">Login</a>
+                  <a class="nav-link" href="/users/login">Login</a>
                </li>
                <li class="nav-item">
                   <a class="nav-link" href="/users/new">Sign Up</a>
@@ -41,140 +41,165 @@
          </div>
       </div>
 
-      <div class="container">
-         <div class="row py-2">
+      <div class="container mb-2 py-4">
+         <div class="row">
             <div class="col-md-12">
                <h1>Categories</h1>
                <p>Browse groups by topics you're interested in</p>
             </div>
          </div>
          <div class="row py-2">
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/outdoors-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/outdoors-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Outdoor & Adventure</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Outdoor & Adventure</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/tech-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/tech-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Tech</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Tech</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/family-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/family-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Family</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Family</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/fitness-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/fitness-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Sports & Fitness</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Sports & Fitness</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/photography-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/photography-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Photography</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Photography</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/food-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/food-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Food & Drink</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Food & Drink</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/culture-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/culture-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Language & Culture</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Language & Culture</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/movements-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/movements-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Movements</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Movements</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/pets-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/pets-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Pets</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Pets</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/games-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/games-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Sci-Fi & Games</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Sci-Fi & Games</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/social-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/social-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Social</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Social</a>
+                     </h5>
                   </div>
                </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-               <div class="card h-100 border-0">
-                  <a href="#"><img class="card-img-top" src="assets/career-img.jpg" alt=""></a>
+            <div class="col-md-3 mb-2">
+               <div class="card border-0">
+                  <a href="#"><img class="card-img-top rounded-lg" src="assets/career-img.jpg" alt=""></a>
                   <div class="card-body">
-                     <h4 class="card-title">
-                        <a href="#">Career & Business</a>
-                     </h4>
+                     <h5 class="card-title">
+                        <a href="#" class="text-body">Career & Business</a>
+                     </h5>
                   </div>
                </div>
             </div>
          </div>
       </div>
 
-      <footer class="py-5 bg-dark">
+      <footer class="py-4 bg-dark">
          <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; GroupUp 2019</p>
+            <div class="row pb-4">
+               <div class="col-md-3 mx-auto">
+                  <h3>Your Account</h3>
+                  <p><a href="" class="text-white">Sign up</a></p>
+                  <p><a href="" class="text-white">Log in</a></p>
+                  <p><a href="" class="text-white">Guest</a></p>
+               </div>
+               <div class="col-md-3 mx-auto">
+                  <h3>Discover</h3>
+                  <p><a href="" class="text-white">Groups</a></p>
+                  <p><a href="" class="text-white">Calender</a></p>
+                  <p><a href="" class="text-white">Cities</a></p>
+               </div>
+               <div class="col-md-3 mx-auto">
+                  <h3 class="pb-2">Follow us</h3>
+                  <a href="#"><i class="fab fa-facebook-square text-white fa-2x px-2"></i></a>
+                  <a href="#"><i class="fab fa-twitter text-white fa-2x px-2"></i></a>
+                  <a href="#"><i class="fab fa-youtube text-white fa-2x px-2"></i></a>
+                  <a href="#"><i class="fab fa-instagram text-white fa-2x px-2"></i></a>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 border-top pt-4">
+                  <p class="m-0 text-center text-white">Copyright &copy; GroupUp 2019</p>
+               </div>
+            </div>
          </div>
       </footer>
 

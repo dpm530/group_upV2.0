@@ -2,9 +2,13 @@ class UsersController < ApplicationController
 
    def index
       @groups=Group.where(user: current_user).all
-      puts "="*100
-      puts @groups
-      puts "="*100
+      @all_groups=Group.all
+   end
+
+   def new
+   end
+
+   def login
    end
 
    def create
@@ -30,7 +34,29 @@ class UsersController < ApplicationController
       return redirect_to new_user_path
    end
 
-   def guest_login
+   def new_guest
+   end
+
+   def edit
+   end
+
+
+   def update
+      @location=Location.existsOrCreate(params[:location][:city], params[:location][:state])
+
+      @user=current_user
+
+      if @user.update(user_params) && @location.valid?
+         flash[:notice]=["User Updated"]
+         return redirect_to users_path
+      end
+
+      errors=@user.errors.full_messages + @location.errors.full_messages
+
+      flash[:errors]=errors
+
+      return redirect_to edit_users_path
+
    end
 
    private

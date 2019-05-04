@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
    resources :users do
       collection do
-         get 'guest_login' => 'users#guest_login'
+         get 'new_guest' => 'users#new_guest'
+         get 'index_guest' => 'users#index_guest'
+         get 'login' => 'users#login'
       end
    end
 
@@ -46,7 +48,7 @@ Rails.application.routes.draw do
    resources :sessions do
       collection do
          post 'login' => 'sessions#create'
-         post 'guest_login' => 'sessions#create_guest'
+         post 'login_guest' => 'sessions#create_guest'
          delete 'logout' => 'sessions#destroy'
       end
    end
