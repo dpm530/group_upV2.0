@@ -14,6 +14,8 @@ class User < ApplicationRecord
    validates_format_of :email,with:  /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
    validates :password, presence: true
 
+   mount_uploader :image, UserUploader
+
    before_save :downcase_fields
 
    def downcase_fields

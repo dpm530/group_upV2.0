@@ -46,7 +46,7 @@
       <div class="container py-4">
          <div class="row">
             <div class="col-md-6 mx-auto">
-               <form action="/groups/<%= @group.id %>" method="post">
+               <form action="/groups/<%= @group.id %>" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
                   <input type="hidden" name="_method" value="patch">
 
@@ -83,6 +83,11 @@
                   <h4>Describe who should join, and what your GroupUp will do.</h4>
                   <div class="form-group">
                      <textarea name="group[description]" rows="8" cols="80" class="form-control"><%= @group.description %></textarea>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="image">Group Picture:</label>
+                     <input type="file" name="group[image]" id="image" class="form-control"  multiple>
                   </div>
 
                   <button type="submit" class="btn btn-primary">Update</button>

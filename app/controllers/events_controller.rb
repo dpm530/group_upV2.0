@@ -44,7 +44,7 @@ class EventsController < ApplicationController
          if @event.update(update_event_params)
             flash[:notice]=["Updated Event"]
 
-            return redirect_to group_path
+            return redirect_to event_path(@event)
          end
       end
 
@@ -56,10 +56,11 @@ class EventsController < ApplicationController
 
    def destroy
       @event=Event.find(params[:id])
+      @group=@event.group
 
       if @event.destroy
          flash[:notice]=["Event Deleted"]
-         return redirect_to group_path
+         return redirect_to group_path(@group)
       end
    end
 

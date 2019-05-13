@@ -36,7 +36,7 @@
                   <div class="card-body">
                      <h5 class="card-title text-center">Edit</h5>
 
-                     <form class="form-signin" action="/users/<%= current_user.id %>" method="post">
+                     <form class="form-signin" action="/users/<%= current_user.id %>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
                         <input type="hidden" name="_method" value="patch">
 
@@ -73,6 +73,11 @@
                         <div class="form-label-group">
                            <input type="text" name="location[state]" id="state" class="form-control" value="<%= current_user.location.state %>" placeholder="State" required>
                            <label for="city">State:</label>
+                        </div>
+
+                        <div class="form-label-group">
+                           <input type="file" name="user[image]" id="image" class="form-control" placeholder="Profile Picture" multiple>
+                           <label for="image">Profile Picture:</label>
                         </div>
 
                         <div class="custom-control custom-checkbox mb-3">
@@ -118,6 +123,6 @@
             </div>
          </div>
       </footer>
-      
+
    </body>
 </html>

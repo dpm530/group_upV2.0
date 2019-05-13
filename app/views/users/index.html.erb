@@ -42,7 +42,7 @@
                <% if current_user %>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= current_user.firstName.capitalize %> <%= current_user.lastName.capitalize %> <i class="fas fa-user-circle"></i>
+                        <%= current_user.firstName.capitalize %> <%= current_user.lastName.capitalize %> <%= image_tag(current_user.image_url(:thumb).to_s) %>
                      </a>
                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/users/<%= current_user.id %>/edit">Edit profile</a>
@@ -62,6 +62,7 @@
          </div>
       </header>
 
+
       <div class="container">
          <div class="row">
             <div class="col-md-12">
@@ -70,27 +71,21 @@
          </div>
          <br>
          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-md-10">
-               <div class="row">
-                  <% if @groups && current_user %>
-                     <% @groups.each do |group| %>
-                        <div class="col-md-4">
-                           <div class="card">
-                              <a href="/groups/<%= group.id %>">
-                                 <img class="card-img-top" src="http://placehold.it/700x400" alt="Card image">
-                                 <div class="card-img-overlay">
-                                    <h4 class="card-title"><%= group.name.capitalize %></h4>
-                                    <p class="card-text"><%= group.category.capitalize %></p>
-                                 </div>
-                              </a>
+            <% if @groups && current_user %>
+               <% @groups.each do |group| %>
+                  <div class="col-md-4">
+                     <div class="card">
+                        <a href="/groups/<%= group.id %>">
+                           <%= image_tag(group.image_url.to_s, class:"w-100") %>
+                           <div class="card-img-overlay">
+                              <h4 class="card-title"><%= group.name.capitalize %></h4>
+                              <p class="card-text"><%= group.category.capitalize %></p>
                            </div>
-                        </div>
-                     <% end %>
-                  <% end %>
-               </div>
-            </div>
-            <div class="col-1"></div>
+                        </a>
+                     </div>
+                  </div>
+               <% end %>
+            <% end %>
          </div>
       </div>
 
@@ -108,7 +103,7 @@
                   <div class="col-md-4">
                      <div class="card">
                         <a href="/groups/<%= group.id %>">
-                           <img class="card-img-top" src="http://placehold.it/700x400" alt="Card image">
+                           <%= image_tag(group.image_url.to_s, class:"w-100") %>
                            <div class="card-img-overlay">
                               <h4 class="card-title"><%= group.name.capitalize %></h4>
                               <p class="card-text"><%= group.category.capitalize %></p>

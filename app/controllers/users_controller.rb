@@ -3,9 +3,11 @@ class UsersController < ApplicationController
    def index
       @groups=Group.where(user: current_user).all
       @all_groups=Group.all
+      @user=current_user
    end
 
    def new
+      @user=User.new
    end
 
    def login
@@ -61,7 +63,7 @@ class UsersController < ApplicationController
 
    private
       def user_params
-         params.require(:user).permit(:firstName, :lastName, :email, :password).merge(location: @location)
+         params.require(:user).permit(:firstName, :lastName, :email, :password, :image).merge(location: @location)
       end
 
 end
