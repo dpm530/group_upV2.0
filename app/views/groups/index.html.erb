@@ -63,17 +63,17 @@
          </div>
       </header>
 
-      <div class="container">
+      <div class="container mb-4 pb-4">
 
          <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Sugested Groups</h1>
 
          <hr class="mt-2 mb-5">
 
-         <div class="row text-center text-lg-left">
+         <div class="row text-center text-lg-left mb-4">
             <% @groups.each do |group| %>
                <div class="col-lg-3 col-md-4 col-6">
                   <a href="/groups/<%= group.id %>" class="d-block">
-                     <img class="img-fluid img-thumbnail w-100" src="https://placehold.it/150x80?text=IMAGE" alt="">
+                     <%= image_tag(group.image_url.to_s, class:"w-100") %>
                      <div class="centered" style="position: absolute; bottom:0px; left: 30px;">
                         <h5><%= group.name %></h5>
                         <p>members:</p>
@@ -115,6 +115,6 @@
             </div>
          </div>
       </footer>
-      
+
    </body>
 </html>

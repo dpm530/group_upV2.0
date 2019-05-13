@@ -201,11 +201,15 @@
                                     <div class="col-md-6 pt-4">
                                        <a href="/events/<%= event.id %>">
                                           <h4><%= event.name.capitalize %></h4>
-
                                        </a>
                                     </div>
-                                    <div class="col-md-6 text-center">
-                                       <img src="https://placehold.it/150x80?text=IMAGE" alt="" class="w-75">
+                                    <div class="col-md-6 text-center py-3">
+                                       <div class="row">
+                                          <div class="col-md-6 border mx-auto">
+                                             <h1><%= event.date.strftime("%^b") %></h1>
+                                             <h1><%= event.date.strftime("%d") %></h1>
+                                          </div>
+                                       </div>
                                     </div>
                                  </div>
                               <% end %>
