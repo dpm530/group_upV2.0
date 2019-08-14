@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.production?
-   User.create!(first_name: 'Guest', last_name: 'Account', email: 'guest@groupup.com', password: '123456', password_confirmation: '123456')
+   User.create!(firstName: 'Guest', lastName: 'Account', email: 'guest@groupup.com', password: '123456', password_confirmation: '123456')
 end
 
 if Rails.env.development?
-   User.create!(first_name: 'Guest', last_name: 'Account', email: 'guest@groupup.com', password: '123456', password_confirmation: '123456')
+   User.create!(firstName: 'Guest', lastName: 'Account', email: 'guest@groupup.com', password: '123456', password_confirmation: '123456')
 end
