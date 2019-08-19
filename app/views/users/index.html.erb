@@ -15,7 +15,7 @@
       </header>
 
 
-      <div class="container">
+      <div class="container py-4">
          <div class="row">
             <div class="col-md-12">
                <h1>Your Groups:</h1>
@@ -26,15 +26,17 @@
             <% if @groups && current_user %>
                <% @groups.each do |group| %>
                   <div class="col-md-4">
+
                      <div class="card">
-                        <a href="/groups/<%= group.id %>">
-                           <%= image_tag(group.image_url.to_s, class:"w-100") %>
-                           <div class="card-img-overlay">
-                              <h4 class="card-title"><%= group.name.capitalize %></h4>
-                              <p class="card-text"><%= group.category.capitalize %></p>
-                           </div>
-                        </a>
+
+                        <%= image_tag(group.image_url.to_s, class:'card-img-top', style:'height:200px;') %>
+                        <div class="card-img-overlay">
+                           <h4 class="card-title text-white"><%= group.name.capitalize %><br><small><%= group.category.capitalize %></small></h4>
+                           <a href="/groups/<%= group.id %>" class="stretched-link"></a>
+                        </div>
+
                      </div>
+
                   </div>
                <% end %>
             <% end %>
@@ -52,15 +54,15 @@
          <div class="row">
             <% if  @all_groups %>
                <% @all_groups.each do |group| %>
-                  <div class="col-md-4">
+                  <div class="col-md-4 mb-2">
                      <div class="card">
-                        <a href="/groups/<%= group.id %>">
-                           <%= image_tag(group.image_url.to_s, class:"w-100") %>
-                           <div class="card-img-overlay">
-                              <h4 class="card-title"><%= group.name.capitalize %></h4>
-                              <p class="card-text"><%= group.category.capitalize %></p>
-                           </div>
-                        </a>
+
+                        <%= image_tag(group.image_url.to_s, style:'height:200px;') %>
+                        <div class="card-img-overlay">
+                           <h4 class="card-title text-white"><%= group.name.capitalize %><br><small><%= group.category.capitalize %></small></h4>
+                           <a href="/groups/<%= group.id %>" class="stretched-link"></a>
+                        </div>
+
                      </div>
                   </div>
                <% end %>

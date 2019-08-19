@@ -22,7 +22,18 @@
 
          <div class="row text-center text-lg-left mb-4">
             <% @groups.each do |group| %>
-               <div class="col-lg-3 col-md-4 col-6">
+               <div class="col-md-4 mb-2">
+                  <div class="card">
+
+                     <%= image_tag(group.image_url.to_s, style:'height:200px;') %>
+                     <div class="card-img-overlay">
+                        <h4 class="card-title text-white"><%= group.name.capitalize %><br><small><%= group.category.capitalize %></small></h4>
+                        <a href="/groups/<%= group.id %>" class="stretched-link"></a>
+                     </div>
+
+                  </div>
+               </div>
+               <!-- <div class="col-lg-3 col-md-4 col-6">
                   <a href="/groups/<%= group.id %>" class="d-block">
                      <%= image_tag(group.image_url.to_s, class:"w-100") %>
                      <div class="centered" style="position: absolute; bottom:0px; left: 30px;">
@@ -30,7 +41,7 @@
                         <p>members:</p>
                      </div>
                   </a>
-               </div>
+               </div> -->
             <% end %>
          </div>
 
