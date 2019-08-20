@@ -1,24 +1,25 @@
-# README
+# Group Up
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+GroupUp is a platform for finding and building local communities. People use GroupUp to meet new people, learn new things, find support, get out of their comfort zones, and pursue their passions, together.
 
-Things you may want to cover:
+Users can organize online groups that host in-person events for people with similar interests.
 
-* Ruby version
+## How it works
 
-* System dependencies
+* Choose what you’re into
+* Meet people in your area who share your passion
+* Do more of what makes you tick
 
-* Configuration
+## Technologies Used
 
-* Database creation
+* Ruby on Rails
+* PostgreSQL
+* HTML
+* CSS
+* Bootstrap
+* JavaScript
+* Git/Github
+* AWS: Ec2, Route53, ACM, ELB
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Demo
+* Here is a working live demo : https://groupup.online
