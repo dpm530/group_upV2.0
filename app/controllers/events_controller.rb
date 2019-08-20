@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+   before_action :require_user_login
 
    def show
       @event=Event.find(params[:id])

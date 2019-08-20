@@ -12,4 +12,11 @@ class ApplicationController < ActionController::Base
    helper_method :current_user
    helper_method :current_guest
 
+   private
+
+      def require_user_login
+         if !(session[:user_id])
+            return redirect_to login_users_path
+         end
+      end
 end

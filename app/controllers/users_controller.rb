@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_action :require_user_login, only: [:index, :edit, :update]
 
    def index
       @groups=Group.where(user: current_user).all
