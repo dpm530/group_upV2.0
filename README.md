@@ -1,4 +1,4 @@
-# Group Up
+# GroupUp
 
 GroupUp is a platform for finding and building local communities. People use GroupUp to meet new people, learn new things, find support, get out of their comfort zones, and pursue their passions, together.
 
