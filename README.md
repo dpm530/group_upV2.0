@@ -23,3 +23,4 @@ Users can organize online groups that host in-person events for people with simi
 
 ## Demo
 * Here is a working live demo : https://groupup.online
+* Use Guest Account for quick access.
