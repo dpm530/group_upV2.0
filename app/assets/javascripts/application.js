@@ -17,3 +17,15 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+function effects(){
+
+   // $(window).on('load', function () {
+   //   if ($('.preloader').length) {
+   //     $('.preloader').delay(200).fadeOut('slow', function () {
+   //       $(this).remove();
+   //     });
+   //   }
+   // });
+
+}

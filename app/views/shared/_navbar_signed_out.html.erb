@@ -1,20 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom p-1">
 
-   <a class="navbar-brand" href="/">
+   <a class="navbar-brand animated fadeInLeft slow" href="/">
       <img src="/assets/logo2.png" alt="" style="width:55%;">
    </a>
+
 
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
    </button>
 
-   <div class="collapse navbar-collapse" id="navbarResponsive">
+   <div class="collapse navbar-collapse animated fadeInRight slow" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
          <li class="nav-item active border-right">
             <a class="nav-link" href="/">Start a new group</a>
          </li>
-         <li class="nav-item">
-            <a class="nav-link" href="/users/new_guest">Guest</a>
+         <li class="nav-item animated bounce" style="animation-delay: 2s; animation-iteration-count: 5;">
+            <a data-toggle="tooltip" data-placement="bottom" title="Use guest account for full application demo." class="nav-link" href="/users/new_guest">Guest</a>
          </li>
          <li class="nav-item">
             <a class="nav-link" href="/users/login">Login</a>
@@ -26,3 +27,9 @@
    </div>
 
 </nav>
+
+<script>
+   $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();
+   });
+</script>
