@@ -16,14 +16,14 @@
                Home <span class="sr-only">(current)</span>
             </a>
          </li>
-         <li class="nav-item">
+         <li class="nav-item active">
             <a class="nav-link" href="/groups">Explore</a>
          </li>
-         <li class="nav-item border-right">
+         <li class="nav-item border-right active">
             <a class="nav-link" href="/groups/new">Start a new Group</a>
          </li>
          <% if current_guest %>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= current_guest.firstName.capitalize %> <%= current_guest.lastName.capitalize %> <i class="fas fa-user-circle"></i>
                </a>
@@ -35,7 +35,7 @@
             </li>
          <% end %>
          <% if current_user %>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= current_user.firstName.capitalize %> <%= current_user.lastName.capitalize %> <%= image_tag(current_user.image_url(:thumb).to_s) %>
                </a>
